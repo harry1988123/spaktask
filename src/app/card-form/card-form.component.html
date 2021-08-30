@@ -1,0 +1,46 @@
+<div class="card-form__inner">
+    <div class="card-input">
+        <label for="cardNumber" class="__label">Card Number</label>
+        <input type="text"
+        id="cardNumber" 
+        autocomplete="off" 
+        class="__input" 
+        pattern="[0-9\s]{13,19}"
+        autocomplete="cc-number"  
+        maxlength="19"
+        [imask]="imask"
+        [unmask]="true"
+        (keyup)="_cardSer.CheckCardType()"
+        [ngModel]="_cardSer.cardNumber | async"
+        (ngModelChange) = "_cardSer.cardNumber.next(cardNumberInput.value)"
+        inputmode="numeric"
+        #cardNumberInput
+        >
+    </div>
+    <div class="card-input">
+        <label for="cardName" class="__label">Card Holder</label>
+        <input type="text"  id="cardName" autocomplete="off" class="__input" [ngModel]="_cardSer.cardName | async" (ngModelChange) = "_cardSer.cardName.next(cardNameInput.value)" #cardNameInput />
+    </div>
+    <div class="card-form__row">
+        <div class="__col">
+            <div class="__group">
+                <label for="cardMonth" class="__label">Expiration Date</label>
+                <select name="cardMonth" id="" class="__input -select" [ngModel]="_cardSer.cardExpireMonth | async" (ngModelChange) = "_cardSer.cardExpireMonth.next(cardExpMonthInput.value)" #cardExpMonthInput>
+                    <option value="" disabled selected="selected">Month</option>
+                    <option *ngFor="let item of months(); let i = index" value="{{item}}">{{ item }}</option>
+                </select>
+                <select  id="cardYear" class="__input -select" [ngModel]="_cardSer.cardExpireYear | async" (ngModelChange) = "_cardSer.cardExpireYear.next(cardExpYearInput.value)" #cardExpYearInput>
+                    <option value="" disabled="disabled" selected="selected">Year</option>
+                    <option *ngFor="let item of getYear(); let i = index" value="{{item}}">{{ item }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="__col -cvv">
+            <div class="card-input">
+                <label for="cardCvv" class="__label">CVV</label>
+                <input type="text" (focus)="cardTurnCvvBack()" (focusout)="cardTurnCvvFront()" name="" id="cardCvv" maxlength="3" autocomplete="off" class="__input" [ngModel]="_cardSer.cardCVV | async" (ngModelChange) = "_cardSer.cardCVV.next(cardCVVInput.value)" #cardCVVInput/>
+            </div>
+        </div>
+    </div>
+    <button class="_button"> Submit</button>
+</div>
