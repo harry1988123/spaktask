@@ -7,9 +7,9 @@
         </div>
         <div class="card-item__wrapper">
             <div class="card-item__top">
-                <img src="/assets/images/chip.png" alt="" srcset="" class="card-item__chip">
+                <img src="assets/images/chip.png" alt="" srcset="" class="card-item__chip">
                 <div class="card-item__type">
-                    <img src='/assets/images/{{_cardSer.cardType | async}}.png' alt="" srcset="" class="card-item__typeImg">
+                    <img src='assets/images/{{_cardSer.cardType | async}}.png' alt="" srcset="" class="card-item__typeImg">
                 </div>
             </div>
              <input 
@@ -53,7 +53,7 @@
             <div class="card-item__cvvTitle">CVV</div> 
             <input type="text" name="" id="" class="card-item__cvvBand" [imask]="{mask:'000'}" placeholder="****" [ngModel]="_cardSer.cardCVV | async" (ngModelChange) = "_cardSer.cardCVV.next(cardCVVInput.value)" #cardCVVInput/>
             <div class="card-item__type">
-                <img src='/assets/images/{{_cardSer.cardType | async}}.png' alt="" srcset="" class="card-item__typeImg">
+                <img src='assets/images/{{_cardSer.cardType | async}}.png' alt="" srcset="" class="card-item__typeImg">
             </div>
         </div>
     </div>
