@@ -24,7 +24,7 @@ export class CardComponent implements OnInit {
 
   currentCardBackground () {
     let random = Math.floor(Math.random() * 25 + 1)
-    return `/assets/images/${random}.jpeg`; 
+    return `assets/images/${random}.jpeg`; 
   }
 
   constructor(public _cardSer: CardServiceService) { }
